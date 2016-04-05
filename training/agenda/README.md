@@ -5,13 +5,12 @@
 Se trata de realizar una agenda que utilice la API: https://randomuser.me/ y nos permita utilizando componentes como **iron-ajax**, **paper-card**, **paper-button**, **iron-icon**,..., mostrar una serie de datos de cada usuario, como la foto, su nombre y el e-mail
 
 ### Scaffolding, instalación de herramientas y dependencias:
-*(Se parte de npm como dependencia ya resuelta)*
+
 1. Instalamos **bower**: ```$ npm install -g bower```
 2. Instalamos **polyserve**: ```$ npm install -g polyserve```
 3. Creamos el directorio donde vamos a crear la aplicación "agenda": ```$ mkdir agenda```
 4. Inicializamos el árbol de dependencias de la aplicación con los valores por defecto: ```$ bower init```
 5. Instalamos las dependencias de la aplicación:
-
 ```
 $ bower install --save Polymer/Polymer
 $ bower install --save PolymerElements/iron-ajax
