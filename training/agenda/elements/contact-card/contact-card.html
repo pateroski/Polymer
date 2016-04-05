@@ -1,0 +1,73 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../../bower_components/font-roboto/roboto.html">
+
+
+<dom-module id="contact-card">
+  <template>
+    <style>
+    :host {
+      display: block;
+      text-align: center;
+    }
+    .contact {
+      font-family: 'Roboto', sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      margin: 20px;
+      text-align: center;
+      width: 40%;
+    }
+
+    .contact__photo img {
+      border-radius: 50%;
+      border: 2px double grey;
+    }
+    .contact__email paper-button {
+      box-shadow: none;
+      font-size: 14px;
+      margin: 10px;
+      text-align: center;
+      color: black;
+    }
+
+    .contact__email iron-icon {
+      margin: 10px;
+    }
+    </style>
+
+    <paper-card class="contact" heading="{{fullName}}">
+      <div class="contact__photo">
+        <img src="{{user.picture.large}}"/>
+      </div>
+      <div class="contact__email">
+        <a href="mailto:{{user.email}}">
+          <paper-button>
+            <iron-icon class="icon" icon="communication:email">
+            </iron-icon>{{user.email}}
+          </paper-button>
+        </a>
+      </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'contact-card',
+      properties: {
+        user: {
+          type: Object
+        },
+
+        fullName: {
+          type: String,
+          computed: 'computeFullName(user)'
+        }
+      },
+
+      computeFullName: function(user) {
+        return user.name.first + ' ' + user.name.last;
+      }
+    });
+  </script>
+</dom-module>
