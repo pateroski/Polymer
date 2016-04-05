@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <title>contact-card</title>
+    <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" ref="../bower_components/test-fixture/test-fixture.html">
+    <!-- Importación del elemento a testear -->
+    <link rel="import" href="../elements/contact-card/contact-card.html">
+  </head>
+  <body>
+    <!-- Definición de los test-fixtures del componente -->
+    <test-fixture id="contact-card">
+      <template>
+        <contact-card  user=""></contact-card>
+      </template>
+    </test-fixture>
+    <!-- Definición de las diferentes suites de tests -->
+    <script>
+      suite('## contact-card shadow-DOM', function() {
+        var element;
+
+        setup(function() {
+          element = fixture('contact-card');
+        });
+
+        test('contact-card has \'contact\' class', function() {
+          expect(element.$$('.contact')).to.exist;
+        });
+
+        test('contact-card has \'contact__photo\' class', function() {
+          expect(element.$$('.contact__photo')).to.exist;
+        });
+
+        test('contact-card has \'contact__email\' class', function() {
+          expect(element.$$('.contact__photo')).to.exist;
+        });
+
+        test('contact-card has paper-card', function() {
+          expect(element.$$('paper-card')).to.exist;
+        });
+
+        test('contact-card has an anchor', function() {
+          expect(element.$$('a')).to.exist;
+        });
+
+        test('contact-card has an img', function() {
+          expect(element.$$('img')).to.exist;
+        });
+
+        test('contact-card has a button', function() {
+          expect(element.$$('paper-button')).to.exist;
+        });
+
+        test('contact-card has an iron-icon', function() {
+          expect(element.$$('iron-icon')).to.exist;
+        });
+      });
+
+      suite('## contact-card attributes', function() {
+        var element;
+
+        setup(function() {
+          element = fixture('contact-card');
+        });
+
+        test('contact-card has user property', function() {
+          expect(element.hasAttribute('user')).to.be.eql(true);
+        });
+
+        test('paper-card receives aria-label attribute', function () {
+          assert.strictEqual(element.$$('paper-card').getAttribute('aria-label'), '');
+        });
+
+        test('paper-card receives aria-label attribute', function () {
+          assert.strictEqual(element.$$('paper-card').getAttribute('aria-label'), '');
+        });
+
+      });
+    </script>
+  </body>
+</html>

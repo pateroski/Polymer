@@ -1,0 +1,35 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../contact-card/contact-card.html">
+
+<dom-module id="contacts-app">
+  <template>
+    <style>
+    :host {
+      display: block;
+    }
+    </style>
+    <paper-input label="Número de cartas" type="number" value="{{cardsNumber}}"></paper-input>
+    <iron-ajax
+    auto
+    url='https://randomuser.me/api/?results={{cardsNumber}}'
+    params='{"alt":"json", "q":"chrome"}'
+    handle-as="json"
+    last-response="{{data}}"
+    debounce-duration="300">
+    </iron-ajax>
+    <template id="items" is="dom-repeat" items="{{data.results}}">
+      <contact-card user="{{item.user}}"></contact-card>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      is: 'contacts-app',
+
+      properties: {
+        cardsNumber: Number
+      }
+    });
+  </script>
+</dom-module>

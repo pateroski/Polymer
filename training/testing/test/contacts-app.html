@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>contacts-app</title>
+    <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" ref="../bower_components/test-fixture/test-fixture.html">
+    <!-- Importación del elemento a testear -->
+    <link rel="import" href="../elements/contacts-app/contacts-app.html">
+  </head>
+  <body>
+    <!-- Definición de los test-fixtures del componente -->
+    <test-fixture id="contacts-app">
+      <template>
+        <contacts-app></contacts-app>
+      </template>
+    </test-fixture>
+    <!-- Definición de las diferentes suites de tests -->
+    <script>
+      suite('contacts-app tests', function() {
+        var element;
+
+        setup(function() {
+          element = fixture('contacts-app');
+        });
+
+        test('', function() {
+        });
+      });
+    </script>
+  </body>
+</html>
