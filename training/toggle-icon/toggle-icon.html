@@ -1,0 +1,75 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<!--
+A comment describing this element
+
+Example:
+
+    <toggle-icon></toggle-icon>
+
+Example:
+
+      <toggle-icon>
+        <h2>Hello toggle-icon</h2>
+      <toggle-icon>
+
+@demo demo/index.html
+-->
+<dom-module id="toggle-icon">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+      }
+      iron-icon {
+        fill: var(--toggle-icon-color, transparent);
+        stroke: var(--toggle-icon-color, currentcolor);
+      }
+
+      :host([pressed]) iron-icon {
+        fill: var(--toggle-icon-pressed-color, currentcolor);
+      }
+
+    </style>
+
+  <iron-icon icon="[[icon]]"></iron-icon>
+  </template>
+  <script>
+    Polymer({
+      is: 'toggle-icon',
+      properties: {
+        /** The name of the icon **/
+        icon: {
+          type: String
+        },
+        /** The property event */
+        pressed: {
+          type: Boolean,
+          //Va hacer un fire del evento 'pressed-changed' se lanza siempre que la propiedad cambie. En vez de crear el fire, mejor hacerlo de esta manera en Polymer
+          //notify: true,
+          value: false,
+          reflectToAtrribute: true,
+          //observer: '_pressedChange'
+        }
+      },
+      //
+      listeners: {
+        'tap': '_tapped' //Manera de indicar en javascript que es privada
+      },
+      // Nos permite jugar un poquito más y con más propiedades que el observer dentro de la propiedad
+      // observers: {
+      //
+      // }
+      /**
+       * Toggle star styles when pressed for interactivy indication
+       */
+      _tapped: function() {
+        // this.pressed =!this.pressed;
+        this.toggleAttribute('pressed');
+      }
+      // _pressedChange: function() {
+      //   console.log(this.pressed);
+      // }
+    });
+  </script>
+</dom-module>

@@ -1,29 +1,40 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../contact-list-behavior/contact-list-behavior.html">
 
 
-<dom-module id="contact-card">
+<dom-module id="contact-list-card">
   <template>
     <style>
     :host {
       display: block;
       text-align: center;
     }
+
+    :host([favourite]) .contact {
+      background-color: #FF8C00;
+    }
+
     .contact {
       font-family: 'Roboto', sans-serif;
-      font-size: 22px;
+      font-size: 16px;
       font-weight: bold;
       margin: 20px;
       text-align: center;
-      width: 40%;
+      width: 400px;
     }
 
     .contact__photo img {
       border-radius: 50%;
       border: 2px double grey;
+    }
+
+    .contact__email span {
+      width: 100%;
+      display: block;
     }
     .contact__email paper-button {
       box-shadow: none;
@@ -31,6 +42,7 @@
       margin: 10px;
       text-align: center;
       color: black;
+      width: 80%;
     }
 
     .contact__email iron-icon {
@@ -43,31 +55,19 @@
         <img src="{{user.picture.large}}"/>
       </div>
       <div class="contact__email">
-        <a href="mailto:{{user.email}}">
-          <paper-button>
-            <iron-icon class="icon" icon="communication:email">
-            </iron-icon>{{user.email}}
-          </paper-button>
-        </a>
+        <!--a href="mailto:{{user.email}}">
+        </a -->
+        <span>{{user.email}}</span>
+        <paper-button on-tap="_markFavourite">
+          <iron-icon class="icon" icon="star">
+          </iron-icon>
+        </paper-button>
       </div>
   </template>
   <script>
     Polymer({
-      is: 'contact-card',
-      properties: {
-        user: {
-          type: Object
-        },
-
-        fullName: {
-          type: String,
-          computed: 'computeFullName(user)'
-        }
-      },
-
-      computeFullName: function(user) {
-        return user.name.first + ' ' + user.name.last;
-      }
+      is: 'contact-list-card',
+      behaviors: [Polymer.ContactListBehavior]
     });
   </script>
 </dom-module>

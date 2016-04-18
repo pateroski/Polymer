@@ -1,0 +1,35 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../contact-list-behavior/contact-list-behavior.html">
+<dom-module id="contact-list-item">
+  <template>
+    <style>
+    :host([favourite]) .contact {
+      background-color: #FF8C00;
+    }
+    </style>
+
+    <paper-icon-item class="contact">
+        <div item-icon>
+          <iron-image src="{{user.picture.thumbnail}}"></iron-image>
+        </div>
+        <paper-item-body three-line>
+          <div>{{fullName}}</div>
+          <div secondary>{{user.email}}</div>
+        </paper-item-body>
+        <paper-icon-button icon="star" alt="favourite this!" on-tap="_markFavourite">
+        </paper-icon-button>
+    </paper-icon-item>
+  </template>
+  <script>
+    Polymer({
+      is: 'contact-list-item',
+      behaviors: [Polymer.ContactListBehavior]
+    });
+  </script>
+</dom-module>

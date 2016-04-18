@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>toggle-star demo</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+
+    <link rel="import" href="../../iron-icons/iron-icons.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../toggle-icon.html">
+    <!--
+    'custom-style' se trata de un componente que extiende la etiqueta style
+    'include' nos permite incluir estilos desde otras hojas de estilo
+    -->
+    <style is="custom-style" include="demo-pages-shared-styles">
+    /** Afecta a todo el documento **/
+      :root {
+        --toggle-icon-pressed-color: blue;
+      }
+
+      .vertical-section-container {
+        max-width: 600px;
+      }
+    </style>
+  </head>
+  <body unresolved>
+    <div class="vertical-section-container centered">
+      <h3>Demo del código</h3>
+      <demo-snippet>
+        <template>
+          <toggle-icon icon="star"></toggle-icon>
+          <toggle-icon icon="star" pressed></toggle-icon>
+        </template>
+    </demo-snippet>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../contact-list-card/contact-list-card.html">
+<link rel="import" href="../contact-list-item/contact-list-item.html">
+
+<dom-module id="agendas-lists">
+  <template>
+    <style>
+    :host {
+      display: block;
+      position: relative;
+    }
+    .select__view {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      background-color: #3f51b5;
+      width: 200px;
+      color: #ffffff;
+    }
+
+    </style>
+    <paper-input label="Número de cartas" type="number" value="{{cardsNumber}}"></paper-input>
+    <iron-ajax
+    auto
+    url$="https://randomuser.me/api/?results={{cardsNumber}}"
+    handle-as="json"
+    last-response="{{data}}">
+    </iron-ajax>
+    <paper-button class="select__view" raised on-tap="_changeView">Cambiar Vista</paper-button>
+    <template is="dom-if" if="{{view}}">
+      <template id="items" is="dom-repeat" items="{{data.results}}">
+        <contact-list-card user="{{item}}"></contact-list-card>
+      </template>
+    </template>
+      <template is="dom-if" if="{{!view}}">
+        <template id="items" is="dom-repeat" items="{{data.results}}">
+          <contact-list-item user="{{item}}"></contact-list-item>
+        </template>
+      </template>
+  </template>
+  <script>
+    Polymer({
+      is: 'agendas-lists',
+
+      properties: {
+        cardsNumber: {
+          type: Number,
+          value: 5
+        },
+        view: {
+          type: Boolean,
+          value: true
+        },
+        data: {
+          type: Array
+        }
+      },
+      _changeView: function() {
+        this.toggleAttribute('view');
+      }
+    });
+  </script>
+</dom-module>
