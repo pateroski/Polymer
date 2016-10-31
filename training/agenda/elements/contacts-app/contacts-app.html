@@ -25,11 +25,6 @@
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: flex-start;
-
-      }
-
-      .card {
-
       }
     </style>
     <paper-input class="total-people" label="Número de cartas" type="text" value="{{cardsNumber}}"></paper-input>
@@ -43,7 +38,7 @@
     </iron-ajax>
     <div class="cards_container">
       <template id="items" is="dom-repeat" items="{{data.results}}">
-        <contact-card user="{{item}}" class="card"></contact-card>
+        <contact-card user="{{item}}"></contact-card>
       </template>
     </div>
   </template>
