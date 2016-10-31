@@ -1,28 +1,51 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../../bower_components/mercury-paginator/mercury-paginator.html">
 <link rel="import" href="../contact-card/contact-card.html">
 
 <dom-module id="contacts-app">
   <template>
     <style>
-    :host {
-      display: block;
-    }
+      :host {
+        display: block;
+      }
+      .total-people {
+        --paper-input-container-color: rgba(30, 139, 143, 0.7);
+        --paper-input-container-focus-color: rgba(30, 139, 143, 0.7);
+        --paper-input-container-label: {
+          color: rgba(30, 139, 143, 0.7);
+        }
+        width: 40%;
+        margin: 0 auto;
+      }
+
+      .cards_container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+
+      }
+
+      .card {
+
+      }
     </style>
-    <paper-input label="Número de cartas" type="number" value="{{cardsNumber}}"></paper-input>
+    <paper-input class="total-people" label="Número de cartas" type="text" value="{{cardsNumber}}"></paper-input>
     <iron-ajax
     auto
-    url='https://randomuser.me/api/?results={{cardsNumber}}'
+    url='https://api.randomuser.me/?results={{cardsNumber}}'
     params='{"alt":"json", "q":"chrome"}'
     handle-as="json"
     last-response="{{data}}"
     debounce-duration="300">
     </iron-ajax>
-    <template id="items" is="dom-repeat" items="{{data.results}}">
-      <contact-card user="{{item.user}}"></contact-card>
-    </template>
+    <div class="cards_container">
+      <template id="items" is="dom-repeat" items="{{data.results}}">
+        <contact-card user="{{item}}" class="card"></contact-card>
+      </template>
+    </div>
   </template>
   <script>
     Polymer({

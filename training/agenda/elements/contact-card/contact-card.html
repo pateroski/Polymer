@@ -12,29 +12,57 @@
       display: block;
       text-align: center;
     }
+
     .contact {
       font-family: 'Roboto', sans-serif;
       font-size: 22px;
       font-weight: bold;
+      height: auto;
       margin: 20px;
       text-align: center;
-      width: 40%;
+      width: 250px;
+      --paper-card-header-color: rgba(30, 139, 143, .9);
     }
 
     .contact__photo img {
       border-radius: 50%;
       border: 2px double grey;
     }
-    .contact__email paper-button {
-      box-shadow: none;
-      font-size: 14px;
-      margin: 10px;
-      text-align: center;
-      color: black;
+
+    .contact__email {
+      width: 100%;
     }
 
-    .contact__email iron-icon {
+    .contact__email paper-button {
+      box-shadow: none;
+      color: black;
+      display: block;
+      font-size: 11px;
+      margin: 10px auto;
+      text-align: center;
+    }
+
+    .email_link {
+      text-decoration: none;
+    }
+
+    .icon {
+      display: inline-block;
+    }
+
+    .email_icon {
+      display: inline-block;
       margin: 10px;
+      --iron-icon-fill-color: rgba(30, 139, 143, 0.7);
+    }
+
+    .email_button {
+      width: 80%;
+      --paper-button-ink-color: rgba(30, 139, 143, 0.7);
+    }
+
+    .email_text {
+      color: rgb(30, 139, 143);
     }
     </style>
 
@@ -43,14 +71,17 @@
         <img src="{{user.picture.large}}"/>
       </div>
       <div class="contact__email">
-        <a href="mailto:{{user.email}}">
-          <paper-button>
-            <iron-icon class="icon" icon="communication:email">
-            </iron-icon>{{user.email}}
+        <a href="mailto:\{{user.email}}" class="email_link">
+          <paper-button class="email_button">
+            <iron-icon class="email_icon" icon="communication:email">
+            </iron-icon>
+            <span class="email_text">{{user.email}}</span>
           </paper-button>
         </a>
       </div>
+    </paper-card>
   </template>
+
   <script>
     Polymer({
       is: 'contact-card',
@@ -70,4 +101,5 @@
       }
     });
   </script>
+
 </dom-module>
