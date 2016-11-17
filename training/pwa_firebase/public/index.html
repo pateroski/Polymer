@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <!-- Older Chrome configuration -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="ToDo App">
+    <link rel="icon"
+      sizes="192x192"
+      href="bower_components/note-app/common/images/icon-4x.png">
+
+    <title>ToDo App</title>
+    <!-- styles -->
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+    <!-- app Dependencies -->
+    <script src="./bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="./bower_components/web-animations-js/web-animations.min.js"></script>
+  <link rel="import" href="./bower_components/platinum-sw/platinum-sw-elements.html">
+  <link rel="import" href="./bower_components/polymerfire/firebase-app.html">
+  <link rel="import" href="./todo-app.html">
+  </head>
+  <body>
+    <!-- Service worker configuration -->
+    <platinum-sw-register auto-register skip-waiting clients-claim reload-on-install href_"sw-import.js">
+      <platinum-sw-cache default-cache-strategy="networkFirst">
+      </platinum-sw-cache>
+    </platinum-sw-register>
+    <!-- firebase integration -->
+    <firebase-app
+      name="ToDo App"
+      api-key="{{your-api-key}}"
+      auth-domain="your-auth-domain"
+      database-url="your-database-url">
+    </firebase-app>
+    <!-- our component -->
+    <todo-app></todo-app>
+  </body>
+</html>
