@@ -1,6 +1,6 @@
 ## Firebase y PWA: ToDo App
 
-**Important!:** you need to follow the codelab instructions below for complete correctly this exercise.
+**¡Importante!:** es necesario seguir las instrucciones indicadas en el codelab para finalizar correctamente el ejercicio
 
 ### Codelabs
 * [PWA y Firebase](https://codelabs.developers.google.com/codelabs/polymer-firebase-pwa/index.html#0)
